@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영어 단어 암기</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- CSV 읽기 -->
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>📚 영어 단어 암기</h1>
+        <p id="subtitle">DAY를 선택하세요</p>
+    </header>
+
+    <!-- Day 선택 화면 -->
+    <section id="daySelect">
+
+        <div id="dayList"></div>
+
+    </section>
+
+    <!-- 퀴즈 화면 -->
+    <section id="quizScreen" class="hidden">
+
+        <div class="topBar">
+
+            <button id="backBtn">← DAY 선택</button>
+
+            <span id="progress"></span>
+
+        </div>
+
+        <div class="card">
+
+            <div id="question" class="question"></div>
+
+            <div id="partOfSpeech" class="pos"></div>
+
+            <button id="speakBtn">
+                🔊 발음 듣기
+            </button>
+
+            <div id="choices" class="choices"></div>
+
+        </div>
+
+    </section>
+
+    <!-- 결과 화면 -->
+    <section id="resultScreen" class="hidden">
+
+        <h2>🎉 완료!</h2>
+
+        <p id="score"></p>
+
+        <button id="restartBtn">
+            DAY 다시 풀기
+        </button>
+
+    </section>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
