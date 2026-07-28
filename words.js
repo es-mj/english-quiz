@@ -1,1 +1,22 @@
-
+const words = [
+  { english: "apple", korean: "사과" },
+  { english: "banana", korean: "바나나" },
+  { english: "book", korean: "책" },
+  { english: "cat", korean: "고양이" },
+  { english: "dog", korean: "개" },
+  { english: "egg", korean: "달걀" },
+  { english: "fish", korean: "물고기" },
+  { english: "grape", korean: "포도" },
+  { english: "house", korean: "집" },
+  { english: "ice", korean: "얼음" },
+  { english: "juice", korean: "주스" },
+  { english: "key", korean: "열쇠" },
+  { english: "lion", korean: "사자" },
+  { english: "milk", korean: "우유" },
+  { english: "nose", korean: "코" },
+  { english: "orange", korean: "오렌지" },
+  { english: "pencil", korean: "연필" },
+  { english: "queen", korean: "여왕" },
+  { english: "rabbit", korean: "토끼" },
+  { english: "sun", korean: "태양" }
+];
