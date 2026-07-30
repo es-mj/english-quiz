@@ -1,69 +1,62 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>영어 단어 암기</title>
-
-    <link rel="stylesheet" href="style.css">
-
-    <!-- CSV 읽기 -->
-    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English Quiz</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <div class="container">
 
-    <header>
-        <h1>📚 영어 단어 암기</h1>
-        <p id="subtitle">DAY를 선택하세요</p>
-    </header>
+  <h1>📚 English Quiz</h1>
 
-    <!-- Day 선택 화면 -->
-    <section id="daySelect">
+  <div id="dayScreen">
+    <h2>DAY 선택</h2>
+    <div id="dayList"></div>
+  </div>
 
-        <div id="dayList"></div>
 
-    </section>
+  <div id="quizScreen" class="hidden">
 
-    <!-- 퀴즈 화면 -->
-    <section id="quizScreen" class="hidden">
+    <div class="top">
+      <button id="backBtn">← DAY 선택</button>
+      <span id="progress"></span>
+    </div>
 
-        <div class="topBar">
+    <div class="card">
 
-            <button id="backBtn">← DAY 선택</button>
+      <div id="question"></div>
 
-            <span id="progress"></span>
+      <button id="speakBtn">
+        🔊 발음 듣기
+      </button>
 
-        </div>
+      <input 
+        id="answerInput"
+        placeholder="정답 입력"
+        autocomplete="off"
+      >
 
-        <div class="card">
+      <button id="checkBtn">
+        확인
+      </button>
 
-            <div id="question" class="question"></div>
+      <div id="result"></div>
 
-            <div id="partOfSpeech" class="pos"></div>
+      <div id="info"></div>
 
-            <button id="speakBtn">🔊 발음 듣기</button>
+    </div>
 
-            <div id="choices" class="choices"></div>
+  </div>
 
-        </div>
-
-    </section>
-
-    <!-- 결과 화면 -->
-    <section id="resultScreen" class="hidden">
-
-        <h2>🎉 완료!</h2>
-
-        <p id="score"></p>
-
-        <button id="restartBtn">DAY 다시 풀기</button>
-
-    </section>
 
 </div>
 
+
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 <script src="script.js"></script>
 
 </body>
