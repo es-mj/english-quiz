@@ -343,19 +343,32 @@ document
 .getElementById("speakBtn")
 .onclick=function(){
 
+
 if(index >= quizWords.length){
   return;
 }
 
+
 const word = quizWords[index];
 
+const text = word.영어;
+
+
+// 기존 발음 중지
+speechSynthesis.cancel();
+
+
 const speech =
-new SpeechSynthesisUtterance(word.영어);
+new SpeechSynthesisUtterance(text);
+
 
 speech.lang="en-US";
+
 speech.rate=0.8;
 
+
 speechSynthesis.speak(speech);
+
 
 };
 
