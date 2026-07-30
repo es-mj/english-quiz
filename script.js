@@ -377,9 +377,49 @@ showQuestion();
 
 
 
-document
-.getElementById("testBtn")
-.onclick=function(){
+const testBtn =
+document.getElementById("testBtn");
+
+
+if(testBtn){
+
+testBtn.onclick=function(){
+
+
+quizWords = [...words]
+.sort(
+()=>Math.random()-0.5
+)
+.slice(0,20);
+
+
+currentDay="시험";
+
+testMode=true;
+
+score=0;
+
+
+mode =
+Math.random()>0.5
+? "EN_KO"
+: "KO_EN";
+
+
+index=0;
+
+
+dayScreen.classList.add("hidden");
+
+quizScreen.classList.remove("hidden");
+
+
+showQuestion();
+
+
+};
+
+}
 
 
 quizWords = [...words]
