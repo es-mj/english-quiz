@@ -3,6 +3,7 @@ let words = [];
 let currentDay = null;
 let quizWords = [];
 let index = 0;
+let wrongWords = [];
 
 let mode = "EN_KO"; // EN_KO : 영어→한국어 / KO_EN : 한국어→영어
 
@@ -174,13 +175,12 @@ if(
 
  result.textContent="⭕ 정답";
 
-
 }else{
-
 
  result.textContent =
  `❌ 정답 : ${correct}`;
 
+ wrongWords.push(word);
 
 }
 
@@ -192,12 +192,36 @@ setTimeout(()=>{
  index++;
 
 
- if(index >= quizWords.length){
-
-
-   alert(
-   `DAY ${currentDay} 완료!`
-   );
+  if(index >= quizWords.length){
+  
+  if(wrongWords.length > 0){
+  
+  const retry =
+  confirm(
+  `DAY 완료!\n틀린 단어 ${wrongWords.length}개 다시 풀까요?`
+  );
+  
+  
+  if(retry){
+  
+  quizWords = wrongWords;
+  
+  wrongWords=[];
+  
+  index=0;
+  
+  showQuestion();
+  
+  return;
+  
+  }
+  
+  }
+  
+  
+  alert(
+  `DAY ${currentDay} 완료!`
+  );
 
 
    quizScreen.classList.add("hidden");
