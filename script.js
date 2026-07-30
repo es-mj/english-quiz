@@ -4,6 +4,8 @@ let currentDay = null;
 let quizWords = [];
 let index = 0;
 let wrongWords = [];
+let completedDays = 
+JSON.parse(localStorage.getItem("completedDays")) || [];
 
 let mode = "EN_KO"; // EN_KO : 영어→한국어 / KO_EN : 한국어→영어
 
@@ -47,7 +49,15 @@ function makeDays(){
 
     const btn=document.createElement("button");
 
-    btn.textContent=`DAY ${day}`;
+    if(completedDays.includes(day)){
+
+      btn.textContent=`DAY ${day} ✅`;
+      
+      }else{
+      
+      btn.textContent=`DAY ${day}`;
+      
+    }
 
     btn.onclick=()=>startQuiz(day);
 
@@ -217,7 +227,18 @@ setTimeout(()=>{
   }
   
   }
-  
+
+
+  if(!completedDays.includes(currentDay)){
+
+    completedDays.push(currentDay);
+    
+    localStorage.setItem(
+    "completedDays",
+    JSON.stringify(completedDays)
+    );
+    
+  }
   
   alert(
   `DAY ${currentDay} 완료!`
@@ -227,6 +248,10 @@ setTimeout(()=>{
    quizScreen.classList.add("hidden");
 
    dayScreen.classList.remove("hidden");
+
+   dayList.innerHTML="";
+
+   makeDays();
 
 
  }else{
