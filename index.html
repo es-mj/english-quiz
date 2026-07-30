@@ -3,70 +3,131 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>English Quiz</title>
+
   <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
+
 <div class="container">
 
-  <h1>📚 English Quiz</h1>
 
-  <div id="dayScreen">
-
-  <h2>DAY 선택</h2>
-
-  <div id="dayList"></div>
-
-  </div>
+<h1>📚 English Quiz</h1>
 
 
-  <div id="quizScreen" class="hidden">
 
-  <div id="topBar">
-    <button id="backBtn">← DAY 선택</button>
-    <span id="progress"></span>
-  </div>
+<!-- DAY 선택 화면 -->
+
+<div id="dayScreen">
 
 
-  <div id="card">
-
-    <div id="question"></div>
-
-    <input id="answerInput">
-
-    <button id="checkBtn">
-      확인
-    </button>
-
-    <button id="speakBtn">
-      🔊 발음
-    </button>
-
-    <button id="listBtn" class="hidden">
-      📖 전체 단어 목록
-    </button>
+<h2>DAY 선택</h2>
 
 
-    <div id="wordList" class="hidden"></div>
-
-    <div id="result"></div>
-    <div id="info"></div>
-
-  </div>
-
-</div>
-
-  
-
+<div id="dayList"></div>
 
 
 </div>
+
+
+
+
+
+<!-- 퀴즈 화면 -->
+
+<div id="quizScreen" class="hidden">
+
+
+<div id="topBar">
+
+<button id="backBtn">
+← DAY 선택
+</button>
+
+
+<span id="progress"></span>
+
+
+</div>
+
+
+
+
+
+<div id="card">
+
+
+
+<div id="question"></div>
+
+
+
+<input 
+id="answerInput"
+autocomplete="off">
+
+
+
+
+
+<button id="checkBtn">
+확인
+</button>
+
+
+
+<button id="speakBtn">
+🔊 발음
+</button>
+
+
+
+<button id="listBtn" class="hidden">
+📖 전체 단어 목록
+</button>
+
+
+
+
+<div id="wordList" class="hidden"></div>
+
+
+
+<div id="result"></div>
+
+
+<div id="info"></div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+
 <script src="script.js"></script>
 
+
+
 </body>
+
 </html>
