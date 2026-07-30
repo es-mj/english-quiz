@@ -408,3 +408,37 @@ document.getElementById("modeBtn").onclick = () => {
   showQuestion();
 
 };
+
+
+function showWordList(){
+
+  wordList.innerHTML="";
+
+
+  quizWords.forEach(word=>{
+
+    const div=document.createElement("div");
+
+    div.textContent =
+    `${word.영어}  -  ${word.뜻}`;
+
+
+    wordList.appendChild(div);
+
+  });
+
+
+  wordList.classList.toggle("hidden");
+
+}
+
+
+document
+.getElementById("listBtn")
+.onclick=function(){
+
+showWordList();
+
+};
+
+
