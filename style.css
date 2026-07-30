@@ -98,3 +98,19 @@ input {
   font-size:18px;
   font-weight:bold;
 }
+
+
+#wordList{
+
+margin-top:15px;
+text-align:left;
+
+}
+
+
+#wordList div{
+
+padding:8px;
+border-bottom:1px solid #ddd;
+
+}
