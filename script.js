@@ -311,32 +311,19 @@ document
 .getElementById("speakBtn")
 .onclick=function(){
 
+if(index >= quizWords.length){
+  return;
+}
 
-const word =
-quizWords[index];
-
-
-const text =
-word.영어;
-
-
+const word = quizWords[index];
 
 const speech =
-new SpeechSynthesisUtterance(text);
-
-
+new SpeechSynthesisUtterance(word.영어);
 
 speech.lang="en-US";
-
-
 speech.rate=0.8;
 
-
-speechSynthesis.speak(
- speech
-);
-
-
+speechSynthesis.speak(speech);
 
 };
 
@@ -345,10 +332,13 @@ document
 .getElementById("backBtn")
 .onclick=function(){
 
-
 quizScreen.classList.add("hidden");
 
 dayScreen.classList.remove("hidden");
+
+quizWords=[];
+index=0;
+wrongWords=[];
 
 };
 
