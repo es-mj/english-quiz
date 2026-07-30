@@ -24,21 +24,37 @@
 
   <div id="quizScreen" class="hidden">
 
-  <button id="backBtn">← DAY 선택</button>
+  <div id="topBar">
+    <button id="backBtn">← DAY 선택</button>
+    <span id="progress"></span>
+  </div>
 
-  <div id="question"></div>
 
-  <input id="answerInput">
+  <div id="card">
 
-  <button id="checkBtn">확인</button>
+    <div id="question"></div>
 
-  <button id="speakBtn">🔊 발음</button>
+    <input id="answerInput">
 
-  <button id="listBtn" class="hidden">
-    📖 전체 단어 목록
-  </button>
+    <button id="checkBtn">
+      확인
+    </button>
 
-  <div id="wordList" class="hidden"></div>
+    <button id="speakBtn">
+      🔊 발음
+    </button>
+
+    <button id="listBtn" class="hidden">
+      📖 전체 단어 목록
+    </button>
+
+
+    <div id="wordList" class="hidden"></div>
+
+    <div id="result"></div>
+    <div id="info"></div>
+
+  </div>
 
 </div>
 
