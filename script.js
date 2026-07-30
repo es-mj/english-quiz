@@ -406,7 +406,7 @@ wrongWords=[];
 };
 
 
-document.getElementById("modeBtn").onclick = () => {
+/*document.getElementById("modeBtn").onclick = () => {
 
   if(mode==="EN_KO"){
     mode="KO_EN";
@@ -417,7 +417,7 @@ document.getElementById("modeBtn").onclick = () => {
   index=0;
   showQuestion();
 
-};
+};*/
 
 
 function showWordList(){
