@@ -17,6 +17,8 @@ const dayScreen = document.getElementById("dayScreen");
 const quizScreen = document.getElementById("quizScreen");
 
 const dayList = document.getElementById("dayList");
+const listBtn = document.getElementById("listBtn");
+const wordList = document.getElementById("wordList");
 
 const question = document.getElementById("question");
 const answerInput = document.getElementById("answerInput");
