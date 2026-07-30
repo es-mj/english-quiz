@@ -354,7 +354,6 @@ quizScreen.classList.add("hidden");
 
 dayScreen.classList.remove("hidden");
 
-}
 };
 
 
