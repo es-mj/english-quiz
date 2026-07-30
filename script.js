@@ -74,7 +74,19 @@ function makeDays(){
     }
 
 
-    btn.onclick=()=>startQuiz(day);
+    btn.onclick=()=>{
+
+      currentDay = day;
+    
+      listBtn.classList.remove("hidden");
+    
+      listBtn.onclick=()=>{
+        showWordList(day);
+      };
+    
+      startQuiz(day);
+    
+    };
 
 
     dayList.appendChild(btn);
