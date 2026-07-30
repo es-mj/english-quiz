@@ -422,7 +422,7 @@ document.getElementById("modeBtn").onclick = () => {
 
 function showWordList(){
 
-  wordList.innerHTML="";
+  wordList.innerHTML = "";
 
 
   const list = words.filter(
@@ -437,6 +437,7 @@ function showWordList(){
     div.textContent =
     `${word.영어} - ${word.뜻}`;
 
+
     wordList.appendChild(div);
 
   });
@@ -447,12 +448,16 @@ function showWordList(){
 }
 
 
-document
-.getElementById("listBtn")
-.onclick=function(){
+const listButton = document.getElementById("listBtn");
 
-showWordList();
+if(listButton){
 
-};
+  listButton.onclick=function(){
+
+    showWordList();
+
+  };
+
+}
 
 
