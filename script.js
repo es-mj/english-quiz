@@ -343,3 +343,7 @@ else{
 showQuestion();
 
 };
+
+
+
+console.log("script loaded once");
