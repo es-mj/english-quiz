@@ -27,10 +27,11 @@ fetch("words.csv")
 .then(res => res.text())
 .then(data => {
 
-  const parsed = Papa.parse(data, {
-    header:true,
-    skipEmptyLines:true
-  });
+const parsed = Papa.parse(data, {
+  header:true,
+  skipEmptyLines:true,
+  delimiter:"\t"
+});
 
   words = parsed.data;
 
@@ -44,7 +45,11 @@ function makeDays(){
 
   dayList.innerHTML = "";
 
-  const days = [...new Set(words.map(w=>w.DAY))];
+  const days = [...new Set(
+    words
+    .map(w=>w.DAY)
+    .filter(day => day && day !== "DAY")
+  )];
 
 
   days.forEach(day=>{
