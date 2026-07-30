@@ -42,6 +42,8 @@ fetch("words.csv")
 
 function makeDays(){
 
+  dayList.innerHTML = "";
+
   const days = [...new Set(words.map(w=>w.DAY))];
 
 
@@ -49,17 +51,20 @@ function makeDays(){
 
     const btn=document.createElement("button");
 
+
     if(completedDays.includes(day)){
 
       btn.textContent=`DAY ${day} ✅`;
-      
-      }else{
-      
+
+    }else{
+
       btn.textContent=`DAY ${day}`;
-      
+
     }
 
+
     btn.onclick=()=>startQuiz(day);
+
 
     dayList.appendChild(btn);
 
@@ -249,9 +254,9 @@ setTimeout(()=>{
 
    dayScreen.classList.remove("hidden");
 
-   dayList.innerHTML="";
+   //dayList.innerHTML="";
 
-   makeDays();
+   //makeDays();
 
 
  }else{
