@@ -115,7 +115,27 @@ function startQuiz(day){
 }
 
 
+function splitMeaning(text){
 
+  const match =
+  text.match(/^(n\.|v\.|adj\.|adv\.)\s*(.*)/);
+
+  if(match){
+
+    return {
+      pos: match[1],
+      meaning: match[2]
+    };
+
+  }
+
+
+  return {
+    pos:"",
+    meaning:text
+  };
+
+}
 
 function showQuestion(){
   
@@ -148,8 +168,20 @@ function showQuestion(){
   result.textContent="";
 
 
-  info.textContent =
-  `품사/뜻 : ${word.뜻}`;
+  const meaning =
+  splitMeaning(word.뜻);
+  
+  
+  info.innerHTML =
+  `
+  <div class="pos">
+  ${meaning.pos}
+  </div>
+  
+  <div class="meaning">
+  ${meaning.meaning}
+  </div>
+  `;
 
 
 }
