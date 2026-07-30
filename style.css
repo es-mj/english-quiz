@@ -86,3 +86,15 @@ input {
 .hidden {
   display:none;
 }
+
+
+.pos{
+  font-size:14px;
+  color:#666;
+  margin-top:10px;
+}
+
+.meaning{
+  font-size:18px;
+  font-weight:bold;
+}
