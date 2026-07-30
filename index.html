@@ -24,43 +24,38 @@
 
   <div id="quizScreen" class="hidden">
 
-    <div class="top">
-      <button id="backBtn">← DAY 선택</button>
-      <button id="listBtn">
-        📖 단어 목록
-        </button>
-      <span id="progress"></span>
-    </div>
+  <div id="topBar">
+    <button id="backBtn">← DAY 선택</button>
+    <span id="progress"></span>
+  </div>
 
-    <div class="card">
 
-      <div id="question"></div>
+  <div id="card">
 
-      <button id="modeBtn">
-        🔄 방향 변경
-      </button>
+    <div id="question"></div>
 
-      <button id="speakBtn">
-        🔊 발음 듣기
-      </button>
+    <input id="answerInput">
 
-      <input 
-        id="answerInput"
-        placeholder="정답 입력"
-        autocomplete="off"
-      >
+    <button id="checkBtn">
+      확인
+    </button>
 
-      <button id="checkBtn">
-        확인
-      </button>
+    <button id="speakBtn">
+      🔊 발음
+    </button>
 
-      <div id="result"></div>
+    <button id="listBtn" class="hidden">
+      📖 전체 단어 목록
+    </button>
 
-      <div id="info"></div>
+    <div id="wordList" class="hidden"></div>
 
-    </div>
+    <div id="result"></div>
+    <div id="info"></div>
 
   </div>
+
+</div>
 
 
 </div>
