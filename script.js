@@ -80,8 +80,14 @@ function makeDays(){
     
       listBtn.classList.remove("hidden");
     
-      listBtn.onclick=()=>{
-        showWordList(day);
+      btn.onclick=()=>{
+      
+        currentDay = day;
+      
+        listBtn.classList.remove("hidden");
+      
+        startQuiz(day);
+      
       };
     
       startQuiz(day);
@@ -429,13 +435,17 @@ function showWordList(){
   wordList.innerHTML="";
 
 
-  quizWords.forEach(word=>{
+  const list = words.filter(
+    w => w.DAY == currentDay
+  );
+
+
+  list.forEach(word=>{
 
     const div=document.createElement("div");
 
     div.textContent =
-    `${word.영어}  -  ${word.뜻}`;
-
+    `${word.영어} - ${word.뜻}`;
 
     wordList.appendChild(div);
 
