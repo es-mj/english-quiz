@@ -4,6 +4,8 @@ let currentDay = null;
 let quizWords = [];
 let index = 0;
 
+let mode = "EN_KO"; // EN_KO : 영어→한국어 / KO_EN : 한국어→영어
+
 
 const dayScreen = document.getElementById("dayScreen");
 const quizScreen = document.getElementById("quizScreen");
@@ -22,7 +24,7 @@ fetch("words.csv")
 .then(res => res.text())
 .then(data => {
 
-  const parsed = Papa.parse(data,{
+  const parsed = Papa.parse(data, {
     header:true,
     skipEmptyLines:true
   });
@@ -60,17 +62,29 @@ function startQuiz(day){
 
   currentDay=day;
 
-  quizWords=words.filter(
+
+  quizWords = words.filter(
     w=>w.DAY==day
   );
 
-  quizWords.sort(()=>Math.random()-0.5);
+
+  quizWords.sort(
+    ()=>Math.random()-0.5
+  );
+
+
+  // 문제 방향 랜덤
+  mode =
+  Math.random()>0.5
+  ? "EN_KO"
+  : "KO_EN";
 
 
   index=0;
 
 
   dayScreen.classList.add("hidden");
+
   quizScreen.classList.remove("hidden");
 
 
@@ -80,27 +94,43 @@ function startQuiz(day){
 
 
 
+
 function showQuestion(){
 
-  const word=quizWords[index];
+  const word = quizWords[index];
 
 
-  progress.textContent=
+  progress.textContent =
   `${index+1}/${quizWords.length}`;
 
 
-  question.textContent=
-  word.영어;
+
+  if(mode==="EN_KO"){
+
+    question.textContent =
+    word.영어;
+
+  }
+  else{
+
+    question.textContent =
+    word.뜻;
+
+  }
+
 
 
   answerInput.value="";
+
   result.textContent="";
 
-  info.textContent=
+
+  info.textContent =
   `품사/뜻 : ${word.뜻}`;
 
 
 }
+
 
 
 
@@ -109,41 +139,81 @@ document
 .onclick=function(){
 
 
-const word=quizWords[index];
+const word = quizWords[index];
 
 
-const answer=
+const user =
 answerInput.value.trim();
 
 
-if(answer===word.뜻){
 
- result.textContent="⭕ 정답";
+let correct;
 
-}else{
 
- result.textContent=
- `❌ 정답 : ${word.뜻}`;
+
+if(mode==="EN_KO"){
+
+  correct =
+  word.뜻;
+
+}
+else{
+
+  correct =
+  word.영어;
 
 }
 
 
+
+if(
+ user.toLowerCase()
+ ==
+ correct.toLowerCase()
+){
+
+ result.textContent="⭕ 정답";
+
+
+}else{
+
+
+ result.textContent =
+ `❌ 정답 : ${correct}`;
+
+
+}
+
+
+
 setTimeout(()=>{
+
 
  index++;
 
- if(index>=quizWords.length){
 
-   alert("DAY 완료!");
+ if(index >= quizWords.length){
+
+
+   alert(
+   `DAY ${currentDay} 완료!`
+   );
+
 
    quizScreen.classList.add("hidden");
+
    dayScreen.classList.remove("hidden");
+
 
  }else{
 
+
    showQuestion();
 
+
  }
+
+
 
 },1200);
 
@@ -153,20 +223,42 @@ setTimeout(()=>{
 
 
 
+
+
 document
 .getElementById("speakBtn")
 .onclick=function(){
 
-const text=quizWords[index].영어;
 
-const speech=
+const word =
+quizWords[index];
+
+
+const text =
+word.영어;
+
+
+
+const speech =
 new SpeechSynthesisUtterance(text);
+
+
 
 speech.lang="en-US";
 
-speechSynthesis.speak(speech);
+
+speech.rate=0.8;
+
+
+speechSynthesis.speak(
+ speech
+);
+
+
 
 };
+
+
 
 
 
@@ -174,7 +266,10 @@ document
 .getElementById("backBtn")
 .onclick=function(){
 
+
 quizScreen.classList.add("hidden");
+
 dayScreen.classList.remove("hidden");
+
 
 };
