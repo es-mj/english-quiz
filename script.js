@@ -172,16 +172,7 @@ function showQuestion(){
   splitMeaning(word.뜻);
   
   
-  info.innerHTML =
-  `
-  <div class="pos">
-  ${meaning.pos}
-  </div>
-  
-  <div class="meaning">
-  ${meaning.meaning}
-  </div>
-  `;
+  info.textContent="";
 
 
 }
@@ -228,6 +219,21 @@ if(
 ){
 
  result.textContent="⭕ 정답";
+
+const meaning =
+splitMeaning(word.뜻);
+
+
+info.innerHTML =
+`
+<div class="pos">
+${meaning.pos}
+</div>
+
+<div class="meaning">
+${meaning.meaning}
+</div>
+`;
 
 
 if(testMode){
