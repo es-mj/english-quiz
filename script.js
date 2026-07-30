@@ -273,3 +273,21 @@ dayScreen.classList.remove("hidden");
 
 
 };
+
+
+document
+.getElementById("modeBtn")
+.onclick=function(){
+
+if(mode==="EN_KO"){
+ mode="KO_EN";
+ alert("한국어 → 영어 모드");
+}
+else{
+ mode="EN_KO";
+ alert("영어 → 한국어 모드");
+}
+
+showQuestion();
+
+};
