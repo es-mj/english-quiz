@@ -8,7 +8,8 @@ let completedDays =
 JSON.parse(localStorage.getItem("completedDays")) || [];
 
 let mode = "EN_KO"; // EN_KO : 영어→한국어 / KO_EN : 한국어→영어
-
+let testMode = false;
+let score = 0;
 
 const dayScreen = document.getElementById("dayScreen");
 const quizScreen = document.getElementById("quizScreen");
@@ -82,6 +83,8 @@ function makeDays(){
 function startQuiz(day){
 
   currentDay=day;
+  testMode = false;
+  score = 0;
 
 
   quizWords = words.filter(
@@ -195,6 +198,14 @@ if(
 
  result.textContent="⭕ 정답";
 
+
+if(testMode){
+
+score++;
+
+}
+
+
 }else{
 
  result.textContent =
@@ -213,6 +224,21 @@ setTimeout(()=>{
 
 
   if(index >= quizWords.length){
+
+  if(testMode){
+
+    alert(
+    `시험 종료!\n점수 : ${score}/${quizWords.length}\n${score*5}점`
+    );
+    
+    
+    quizScreen.classList.add("hidden");
+    
+    dayScreen.classList.remove("hidden");
+    
+    return;
+    
+    }
   
   if(wrongWords.length > 0){
   
@@ -351,4 +377,39 @@ showQuestion();
 
 
 
-console.log("script loaded once");
+document
+.getElementById("testBtn")
+.onclick=function(){
+
+
+quizWords = [...words]
+.sort(
+()=>Math.random()-0.5
+)
+.slice(0,20);
+
+
+currentDay="시험";
+
+testMode=true;
+
+score=0;
+
+mode =
+Math.random()>0.5
+? "EN_KO"
+: "KO_EN";
+
+
+index=0;
+
+
+dayScreen.classList.add("hidden");
+
+quizScreen.classList.remove("hidden");
+
+
+showQuestion();
+
+
+};
