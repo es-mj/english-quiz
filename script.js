@@ -254,10 +254,6 @@ setTimeout(()=>{
 
    dayScreen.classList.remove("hidden");
 
-   //dayList.innerHTML="";
-
-   //makeDays();
-
 
  }else{
 
