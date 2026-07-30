@@ -11,6 +11,8 @@ let mode = "EN_KO"; // EN_KO : 영어→한국어 / KO_EN : 한국어→영어
 let testMode = false;
 let score = 0;
 
+const NEXT_DELAY = 2500;
+
 const dayScreen = document.getElementById("dayScreen");
 const quizScreen = document.getElementById("quizScreen");
 
@@ -335,7 +337,7 @@ setTimeout(()=>{
 
 
 
-},1200);
+},NEXT_DELAY);
 
 
 
