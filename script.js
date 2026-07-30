@@ -250,9 +250,11 @@ setTimeout(()=>{
   );
 
 
-   quizScreen.classList.add("hidden");
-
-   dayScreen.classList.remove("hidden");
+  quizScreen.classList.add("hidden");
+  
+  dayScreen.classList.remove("hidden");
+  
+  makeDays();
 
 
  }else{
