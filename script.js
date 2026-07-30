@@ -30,8 +30,7 @@ fetch("words.csv")
 
 const parsed = Papa.parse(data, {
   header:true,
-  skipEmptyLines:true,
-  delimiter:"\t"
+  skipEmptyLines:true
 });
 
   words = parsed.data;
