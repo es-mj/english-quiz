@@ -1,177 +1,180 @@
-// ==========================
-// English Quiz v2.0
-// PART 1
-// ==========================
-
 let words = [];
-let currentDay = 0;
-let quizWords = [];
-let currentQuestion = 0;
-let score = 0;
 
-// 화면
-const daySelect = document.getElementById("daySelect");
+let currentDay = null;
+let quizWords = [];
+let index = 0;
+
+
+const dayScreen = document.getElementById("dayScreen");
 const quizScreen = document.getElementById("quizScreen");
-const resultScreen = document.getElementById("resultScreen");
 
 const dayList = document.getElementById("dayList");
-const progress = document.getElementById("progress");
+
 const question = document.getElementById("question");
-const partOfSpeech = document.getElementById("partOfSpeech");
-const choices = document.getElementById("choices");
+const answerInput = document.getElementById("answerInput");
+const result = document.getElementById("result");
+const info = document.getElementById("info");
 
-const backBtn = document.getElementById("backBtn");
-const restartBtn = document.getElementById("restartBtn");
+const progress = document.getElementById("progress");
 
 
-// --------------------
-// CSV 읽기
-// --------------------
+fetch("words.csv")
+.then(res => res.text())
+.then(data => {
 
-async function loadCSV() {
+  const parsed = Papa.parse(data,{
+    header:true,
+    skipEmptyLines:true
+  });
 
-    const response = await fetch("vocabulary.csv");
-    const text = await response.text();
+  words = parsed.data;
 
-    Papa.parse(text, {
+  makeDays();
 
-        header: true,
-        skipEmptyLines: true,
+});
 
-        complete: function(result) {
 
-            words = [];
 
-            result.data.forEach(row => {
+function makeDays(){
 
-                // DAY 읽기 (공백/BOM 제거)
-                let dayValue = "";
+  const days = [...new Set(words.map(w=>w.DAY))];
 
-                for (let key in row) {
-                    if (key.replace(/\uFEFF/g, "").trim().toUpperCase() === "DAY") {
-                        dayValue = row[key];
-                    }
-                }
 
-                const day = Number(dayValue);
+  days.forEach(day=>{
 
-                if (!day || day < 1) return;
+    const btn=document.createElement("button");
 
-                let english = row["영어"] || "";
-                let meaning = row["뜻"] || "";
+    btn.textContent=`DAY ${day}`;
 
-                english = english.trim();
+    btn.onclick=()=>startQuiz(day);
 
-                // 영어 뒤의 ~ 제거
-                english = english.replace(/\s*~$/, "");
+    dayList.appendChild(btn);
 
-                meaning = meaning.trim();
-
-                // 품사 분리
-                let pos = "";
-                let korean = meaning;
-
-                const match = meaning.match(/^(n\.|v\.|adj\.|adv\.|prep\.|pron\.|conj\.|int\.)\s*/i);
-
-                if (match) {
-
-                    pos = match[1];
-
-                    korean = meaning.replace(match[0], "").trim();
-
-                }
-
-                words.push({
-
-                    day,
-                    english,
-                    korean,
-                    pos
-
-                });
-
-            });
-
-            createDayButtons();
-
-        }
-
-    });
+  });
 
 }
 
 
-// --------------------
-// DAY 버튼
-// --------------------
 
-function createDayButtons() {
+function startQuiz(day){
 
-    dayList.innerHTML = "";
+  currentDay=day;
 
-    const days = [...new Set(words.map(w => w.day))];
+  quizWords=words.filter(
+    w=>w.DAY==day
+  );
 
-    days.sort((a, b) => a - b);
+  quizWords.sort(()=>Math.random()-0.5);
 
-    days.forEach(day => {
 
-        const count = words.filter(w => w.day === day).length;
+  index=0;
 
-        const btn = document.createElement("button");
 
-        btn.className = "dayButton";
+  dayScreen.classList.add("hidden");
+  quizScreen.classList.remove("hidden");
 
-        btn.innerHTML = `
-            <div style="font-size:28px;">DAY ${day}</div>
-            <div style="margin-top:8px;color:#666;">
-                ${count} words
-            </div>
-        `;
 
-        btn.onclick = () => startDay(day);
-
-        dayList.appendChild(btn);
-
-    });
+  showQuestion();
 
 }
 
 
-// --------------------
-// DAY 시작
-// --------------------
 
-function startDay(day) {
+function showQuestion(){
 
-    currentDay = day;
+  const word=quizWords[index];
 
-    quizWords = words.filter(w => w.day === day);
 
-    currentQuestion = 0;
-    score = 0;
+  progress.textContent=
+  `${index+1}/${quizWords.length}`;
 
-    console.log("DAY 시작", day);
-    console.log(quizWords);
 
-    // 다음 PART에서 여기부터 퀴즈 시작
+  question.textContent=
+  word.영어;
+
+
+  answerInput.value="";
+  result.textContent="";
+
+  info.textContent=
+  `품사/뜻 : ${word.뜻}`;
+
+
+}
+
+
+
+document
+.getElementById("checkBtn")
+.onclick=function(){
+
+
+const word=quizWords[index];
+
+
+const answer=
+answerInput.value.trim();
+
+
+if(answer===word.뜻){
+
+ result.textContent="⭕ 정답";
+
+}else{
+
+ result.textContent=
+ `❌ 정답 : ${word.뜻}`;
 
 }
 
 
-// --------------------
+setTimeout(()=>{
 
-backBtn.onclick = function(){
+ index++;
 
-    quizScreen.classList.add("hidden");
-    resultScreen.classList.add("hidden");
-    daySelect.classList.remove("hidden");
+ if(index>=quizWords.length){
 
-}
+   alert("DAY 완료!");
 
-restartBtn.onclick=function(){
+   quizScreen.classList.add("hidden");
+   dayScreen.classList.remove("hidden");
 
-    startDay(currentDay);
+ }else{
 
-}
+   showQuestion();
 
-loadCSV();
+ }
+
+},1200);
+
+
+
+};
+
+
+
+document
+.getElementById("speakBtn")
+.onclick=function(){
+
+const text=quizWords[index].영어;
+
+const speech=
+new SpeechSynthesisUtterance(text);
+
+speech.lang="en-US";
+
+speechSynthesis.speak(speech);
+
+};
+
+
+
+document
+.getElementById("backBtn")
+.onclick=function(){
+
+quizScreen.classList.add("hidden");
+dayScreen.classList.remove("hidden");
+
+};
