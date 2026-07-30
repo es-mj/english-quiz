@@ -36,6 +36,8 @@ const parsed = Papa.parse(data, {
 
   words = parsed.data;
 
+  console.log(words);
+
   makeDays();
 
 });
