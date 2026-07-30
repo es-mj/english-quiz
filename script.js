@@ -59,44 +59,34 @@ function makeDays(){
 
 
   days.forEach(day=>{
-
+  
     const btn=document.createElement("button");
-
-
+  
+  
     if(completedDays.includes(day)){
-
+  
       btn.textContent=`DAY ${day} ✅`;
-
+  
     }else{
-
+  
       btn.textContent=`DAY ${day}`;
-
+  
     }
-
-
-    btn.onclick=()=>{
-
+  
+  
+    btn.onclick = ()=>{
+  
       currentDay = day;
-    
+  
       listBtn.classList.remove("hidden");
-    
-      btn.onclick=()=>{
-      
-        currentDay = day;
-      
-        listBtn.classList.remove("hidden");
-      
-        startQuiz(day);
-      
-      };
-    
+  
       startQuiz(day);
-    
+  
     };
-
-
+  
+  
     dayList.appendChild(btn);
-
+  
   });
 
 }
