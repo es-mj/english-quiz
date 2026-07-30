@@ -99,10 +99,7 @@ function startQuiz(day){
 
 
   // 문제 방향 랜덤
-  mode =
-  Math.random()>0.5
-  ? "EN_KO"
-  : "KO_EN";
+  mode = "EN_KO";
 
 
   index=0;
@@ -121,6 +118,7 @@ function startQuiz(day){
 
 
 function showQuestion(){
+  
 
   const word = quizWords[index];
 
@@ -343,9 +341,6 @@ speechSynthesis.speak(
 };
 
 
-
-
-
 document
 .getElementById("backBtn")
 .onclick=function(){
@@ -358,3 +353,15 @@ dayScreen.classList.remove("hidden");
 };
 
 
+document.getElementById("modeBtn").onclick = () => {
+
+  if(mode==="EN_KO"){
+    mode="KO_EN";
+  }else{
+    mode="EN_KO";
+  }
+
+  index=0;
+  showQuestion();
+
+};
