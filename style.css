@@ -216,3 +216,33 @@ h1 {
   }
 
 }
+
+
+#wordList {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+
+.word-item {
+  padding: 12px 5px;
+  border-bottom: 1px solid #eee;
+}
+
+
+.word-item:last-child {
+  border-bottom: none;
+}
+
+
+#listBackBtn {
+  width: 100%;
+  margin-top: 20px;
+  height: 45px;
+  border: none;
+  border-radius: 12px;
+  background: #e0e0e0;
+  font-size: 16px;
+}
