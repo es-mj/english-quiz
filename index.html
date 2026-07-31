@@ -1,133 +1,115 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>English Quiz</title>
+  <title>Blossom English Vocabulary</title>
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 
+  <!-- CSV 읽기용 -->
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 </head>
-
 
 <body>
 
+  <!-- DAY 선택 화면 -->
+  <div id="dayScreen" class="screen">
 
-<div class="container">
+    <h1>🌱 Blossom English</h1>
+    <p>학습할 DAY를 선택하세요</p>
 
+    <div id="dayButtons" class="day-buttons">
+      <!-- JS에서 생성 -->
+    </div>
 
-<h1>📚 English Quiz</h1>
+  </div>
 
 
+  <!-- 퀴즈 화면 -->
+  <div id="quizScreen" class="screen hidden">
 
-<!-- DAY 선택 화면 -->
+    <div class="top-bar">
 
-<div id="dayScreen">
+      <button id="backBtn">
+        ← DAY 선택
+      </button>
 
+      <span id="dayTitle">
+        DAY -
+      </span>
 
-<h2>DAY 선택</h2>
+    </div>
 
 
-<div id="dayList"></div>
+    <div class="quiz-info">
 
+      <span id="progress">
+        0 / 0
+      </span>
 
-</div>
+    </div>
 
 
+    <div class="card">
 
+      <div id="wordType" class="word-type">
+        <!-- 품사 -->
+      </div>
 
 
-<!-- 퀴즈 화면 -->
+      <div id="questionWord" class="word">
+        WORD
+      </div>
 
-<div id="quizScreen" class="hidden">
 
+      <button id="speakBtn">
+        🔊 발음 듣기
+      </button>
 
-<div id="topBar">
 
-<button id="backBtn">
-← DAY 선택
-</button>
+      <div id="answerBox" class="answer hidden">
 
+        <div id="answerText">
+          뜻
+        </div>
 
-<span id="progress"></span>
+      </div>
 
 
-</div>
+      <button id="showAnswerBtn">
+        정답 보기
+      </button>
 
 
+    </div>
 
 
+    <div class="quiz-buttons">
 
-<div id="card">
+      <button id="modeBtn">
+        EN → KO
+      </button>
 
 
+      <button id="nextBtn">
+        다음
+      </button>
 
-<div id="question"></div>
+    </div>
 
 
+    <button id="restartBtn">
+      🔄 DAY 다시 풀기
+    </button>
 
-<input 
-id="answerInput"
-autocomplete="off">
 
+  </div>
 
-
-
-
-<button id="checkBtn">
-확인
-</button>
-
-
-
-<button id="speakBtn">
-🔊 발음
-</button>
-
-
-
-<button id="listBtn" class="hidden">
-📖 전체 단어 목록
-</button>
-
-
-
-
-<div id="wordList" class="hidden"></div>
-
-
-
-<div id="result"></div>
-
-
-<div id="info"></div>
-
-
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-</div>
-
-
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
 
 <script src="script.js"></script>
 
-
-
 </body>
-
 </html>
