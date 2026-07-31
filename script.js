@@ -30,6 +30,13 @@ const modeBtn = document.getElementById("modeBtn");
 const restartBtn = document.getElementById("restartBtn");
 
 
+// 단어LIST
+const listScreen = document.getElementById("listScreen");
+const wordList = document.getElementById("wordList");
+const listTitle = document.getElementById("listTitle");
+
+const showListBtn = document.getElementById("showListBtn");
+const listBackBtn = document.getElementById("listBackBtn");
 
 // CSV 읽기
 Papa.parse("words.csv", {
@@ -251,5 +258,62 @@ restartBtn.onclick = () => {
   currentIndex = 0;
 
   showWord();
+
+};
+
+
+// 전체 단어 보기
+showListBtn.onclick = () => {
+
+
+  quizScreen.classList.add("hidden");
+
+  listScreen.classList.remove("hidden");
+
+
+  listTitle.textContent =
+    "DAY " + currentDay + " 전체 단어";
+
+
+  wordList.innerHTML = "";
+
+
+  quizWords.forEach(word => {
+
+
+    const div =
+      document.createElement("div");
+
+
+    div.className =
+      "word-item";
+
+
+    div.innerHTML =
+      `
+      <b>${word.영어}</b>
+      <br>
+      ${word.뜻}
+      `;
+
+
+    wordList.appendChild(div);
+
+
+  });
+
+
+};
+
+
+
+// 목록에서 돌아가기
+listBackBtn.onclick = () => {
+
+
+  listScreen.classList.add("hidden");
+
+  quizScreen.classList.remove("hidden");
+
 
 };
