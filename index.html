@@ -24,6 +24,18 @@
       <!-- JS에서 생성 -->
     </div>
 
+    <div id="dayActions" class="hidden">
+    
+      <button id="startBtn">
+        ✏️ 단어 퀴즈 시작
+      </button>
+    
+      <button id="showListBtn">
+        📖 전체 단어 보기
+      </button>
+    
+    </div>
+    
     <div id="listScreen" class="screen hidden">
     
       <h1 id="listTitle">
@@ -87,12 +99,19 @@
       </button>
 
 
+      <input 
+        id="answerInput"
+        type="text"
+        placeholder="정답 입력"
+      >
+      
+      
       <div id="answerBox" class="answer hidden">
-
+      
         <div id="answerText">
           뜻
         </div>
-
+      
       </div>
 
 
