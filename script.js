@@ -38,6 +38,15 @@ const listTitle = document.getElementById("listTitle");
 const showListBtn = document.getElementById("showListBtn");
 const listBackBtn = document.getElementById("listBackBtn");
 
+
+
+const answerInput = document.getElementById("answerInput");
+
+const dayActions = document.getElementById("dayActions");
+const startBtn = document.getElementById("startBtn");
+const showListBtn = document.getElementById("showListBtn");
+
+
 // CSV 읽기
 Papa.parse("words.csv", {
   download: true,
