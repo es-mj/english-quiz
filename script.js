@@ -187,8 +187,21 @@ checkBtn.onclick = () => {
 
   const item = quizWords[currentIndex];
 
+
+  // 채점용 문자열 정리
+  function normalizeAnswer(text) {
+
+    return text
+      .trim()
+      .toLowerCase()
+      .replace(/~/g, "")
+      .replace(/\s+/g, "");
+
+  }
+
+
   const userAnswer =
-    answerInput.value.trim().toLowerCase();
+    normalizeAnswer(answerInput.value);
 
 
   if (!userAnswer) {
@@ -210,7 +223,7 @@ checkBtn.onclick = () => {
     correctAnswers = item.뜻
       .split(",")
       .map(answer =>
-        answer.trim().toLowerCase()
+        normalizeAnswer(answer)
       )
       .filter(answer => answer);
 
@@ -219,7 +232,7 @@ checkBtn.onclick = () => {
     correctAnswers = item.영어
       .split(",")
       .map(answer =>
-        answer.trim().toLowerCase()
+        normalizeAnswer(answer)
       )
       .filter(answer => answer);
 
@@ -241,7 +254,7 @@ checkBtn.onclick = () => {
   } else {
 
     answerText.textContent =
-      `❌ 오답\n정답: ${correctAnswers.join(", ")}`;
+      `❌ 오답\n정답: ${item.뜻}`;
 
   }
 
