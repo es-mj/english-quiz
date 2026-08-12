@@ -86,16 +86,28 @@ function createDayButtons() {
 
 
     btn.onclick = () => {
-
+    
       currentDay = day;
     
       quizWords = words.filter(
         word => word.DAY === day
       );
     
+    
+      // 기존 선택 DAY의 색상 제거
+      document
+        .querySelectorAll(".day-buttons button")
+        .forEach(button => {
+          button.classList.remove("selected");
+        });
+    
+    
+      // 현재 선택한 DAY의 색상 적용
+      btn.classList.add("selected");
+    
+    
       dayActions.classList.remove("hidden");
-
-
+    
     };
 
 
