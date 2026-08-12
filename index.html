@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
@@ -9,144 +10,153 @@
   <link rel="stylesheet" href="style.css" />
 
   <!-- CSV 읽기용 -->
+
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
 </head>
 
 <body>
 
   <!-- DAY 선택 화면 -->
+
   <div id="dayScreen" class="screen">
 
-    <h1>🌱 Blossom English</h1>
-    <p>학습할 DAY를 선택하세요</p>
+```
+<h1>🌱 Blossom English</h1>
 
-    <div id="dayButtons" class="day-buttons">
-      <!-- JS에서 생성 -->
-    </div>
+<p>학습할 DAY를 선택하세요</p>
 
-    <div id="dayActions" class="hidden">
-    
-      <button id="startBtn">
-        ✏️ 단어 퀴즈 시작
-      </button>
-    
-      <button id="showListBtn">
-        📖 전체 단어 보기
-      </button>
-    
-    </div>
-    
-    <div id="listScreen" class="screen hidden">
-    
-      <h1 id="listTitle">
-        DAY 단어 목록
-      </h1>
-    
-      <div id="wordList">
-      </div>
-    
-      <button id="listBackBtn">
-        ← 돌아가기
-      </button>
-    
-    </div>
+<div id="dayButtons" class="day-buttons">
+  <!-- JS에서 DAY 버튼 생성 -->
+</div>
+
+
+<!-- DAY 선택 후 나타나는 버튼 -->
+<div id="dayActions" class="hidden">
+
+  <button id="startBtn">
+    ✏️ 단어 퀴즈 시작
+  </button>
+
+  <button id="showListBtn">
+    📖 전체 단어 보기
+  </button>
+
+</div>
+```
 
   </div>
 
+  <!-- 전체 단어 목록 화면 -->
+
+  <div id="listScreen" class="screen hidden">
+
+```
+<h1 id="listTitle">
+  DAY 단어 목록
+</h1>
+
+<div id="wordList">
+  <!-- JS에서 단어 목록 생성 -->
+</div>
+
+<button id="listBackBtn">
+  ← 돌아가기
+</button>
+```
+
+  </div>
 
   <!-- 퀴즈 화면 -->
+
   <div id="quizScreen" class="screen hidden">
 
-    <div class="top-bar">
-      <button id="showListBtn">
-        📖 전체 단어 보기
-      </button>
+```
+<div class="top-bar">
 
-      <button id="backBtn">
-        ← DAY 선택
-      </button>
+  <button id="backBtn">
+    ← DAY 선택
+  </button>
 
-      <span id="dayTitle">
-        DAY -
-      </span>
+  <span id="dayTitle">
+    DAY -
+  </span>
 
+</div>
+
+
+<div class="quiz-info">
+
+  <span id="progress">
+    0 / 0
+  </span>
+
+</div>
+
+
+<div class="card">
+
+  <div id="wordType" class="word-type">
+    <!-- 품사 -->
+  </div>
+
+
+  <div id="questionWord" class="word">
+    WORD
+  </div>
+
+
+  <button id="speakBtn">
+    🔊 발음 듣기
+  </button>
+
+
+  <!-- 정답 입력 -->
+  <input
+    id="answerInput"
+    type="text"
+    placeholder="정답 입력"
+    autocomplete="off"
+  />
+
+
+  <div id="answerBox" class="answer hidden">
+
+    <div id="answerText">
+      뜻
     </div>
-
-
-    <div class="quiz-info">
-
-      <span id="progress">
-        0 / 0
-      </span>
-
-    </div>
-
-
-    <div class="card">
-
-      <div id="wordType" class="word-type">
-        <!-- 품사 -->
-      </div>
-
-
-      <div id="questionWord" class="word">
-        WORD
-      </div>
-
-
-      <button id="speakBtn">
-        🔊 발음 듣기
-      </button>
-
-
-      <input 
-        id="answerInput"
-        type="text"
-        placeholder="정답 입력"
-      >
-      
-      
-      <div id="answerBox" class="answer hidden">
-      
-        <div id="answerText">
-          뜻
-        </div>
-      
-      </div>
-
-
-      <button id="showAnswerBtn">
-        정답 보기
-      </button>
-
-
-    </div>
-
-
-    <div class="quiz-buttons">
-
-      <button id="modeBtn">
-        EN → KO
-      </button>
-
-
-      <button id="nextBtn">
-        다음
-      </button>
-
-    </div>
-
-
-    <button id="restartBtn">
-      🔄 DAY 다시 풀기
-    </button>
-
 
   </div>
 
 
+  <button id="showAnswerBtn">
+    정답 보기
+  </button>
 
-<script src="script.js"></script>
+</div>
+
+
+<div class="quiz-buttons">
+
+  <button id="modeBtn">
+    EN → KO
+  </button>
+
+  <button id="nextBtn">
+    다음
+  </button>
+
+</div>
+
+
+<button id="restartBtn">
+  🔄 DAY 다시 풀기
+</button>
+```
+
+  </div>
+
+  <script src="script.js"></script>
 
 </body>
 </html>
