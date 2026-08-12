@@ -183,6 +183,7 @@ function showWord() {
 }
 
 // 정답 확인
+// 정답 확인
 checkBtn.onclick = () => {
 
   const item = quizWords[currentIndex];
@@ -194,7 +195,14 @@ checkBtn.onclick = () => {
     return text
       .trim()
       .toLowerCase()
+
+      // 품사 제거
+      .replace(/^(v\.|n\.|adj\.|adv\.|prep\.|conj\.|pron\.|det\.|aux\.)\s*/i, "")
+
+      // 물결표 제거
       .replace(/~/g, "")
+
+      // 공백 제거
       .replace(/\s+/g, "");
 
   }
@@ -266,7 +274,6 @@ checkBtn.onclick = () => {
   nextBtn.disabled = false;
 
 };
-
 
 // 다음 문제
 nextBtn.onclick = () => {
