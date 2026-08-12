@@ -202,26 +202,38 @@ checkBtn.onclick = () => {
   }
 
 
-  let correctAnswer;
+  let correctAnswers = [];
 
 
   if (mode === "EN_KO") {
 
-    correctAnswer =
-      item.뜻.trim().toLowerCase();
+    correctAnswers = item.뜻
+      .split(",")
+      .map(answer =>
+        answer.trim().toLowerCase()
+      )
+      .filter(answer => answer);
 
   } else {
 
-    correctAnswer =
-      item.영어.trim().toLowerCase();
+    correctAnswers = item.영어
+      .split(",")
+      .map(answer =>
+        answer.trim().toLowerCase()
+      )
+      .filter(answer => answer);
 
   }
+
+
+  const isCorrect =
+    correctAnswers.includes(userAnswer);
 
 
   answerBox.classList.remove("hidden");
 
 
-  if (userAnswer === correctAnswer) {
+  if (isCorrect) {
 
     answerText.textContent =
       "⭕ 정답!";
@@ -229,7 +241,7 @@ checkBtn.onclick = () => {
   } else {
 
     answerText.textContent =
-      `❌ 오답\n정답: ${correctAnswer}`;
+      `❌ 오답\n정답: ${correctAnswers.join(", ")}`;
 
   }
 
