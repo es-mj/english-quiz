@@ -393,11 +393,11 @@ showListBtn.onclick = () => {
 // 목록에서 돌아가기
 listBackBtn.onclick = () => {
 
-
   listScreen.classList.add("hidden");
 
-  quizScreen.classList.remove("hidden");
+  dayScreen.classList.remove("hidden");
 
+  dayActions.classList.add("hidden");
 
 };
 
@@ -405,6 +405,9 @@ startBtn.onclick = () => {
 
   currentIndex = 0;
   mode = "EN_KO";
+  
+  // 단어 순서 랜덤 섞기
+  quizWords.sort(() => Math.random() - 0.5);
 
   dayTitle.textContent =
     "DAY " + currentDay;
