@@ -191,9 +191,9 @@ function showWord() {
   answerBox.classList.add("hidden");
 
   answerInput.disabled = false;
+  answerInput.blur();
 
   checkBtn.disabled = false;
-
   nextBtn.disabled = true;
 
 }
@@ -521,4 +521,34 @@ startBtn.onclick = () => {
   showWord();
 
 };
+
+
+// 엔터키로 정답 확인 / 다음 문제
+answerInput.addEventListener("keydown", (event) => {
+
+  if (event.key !== "Enter") {
+    return;
+  }
+
+
+  // 정답 확인 전
+  if (!answerInput.disabled) {
+
+    checkBtn.click();
+
+    return;
+
+  }
+
+
+  // 정답 확인 후
+  if (!nextBtn.disabled) {
+
+    nextBtn.click();
+
+  }
+
+});
+
+
 
