@@ -87,7 +87,14 @@ function createDayButtons() {
 
     btn.onclick = () => {
 
-      startDay(day);
+      currentDay = day;
+    
+      quizWords = words.filter(
+        word => word.DAY === day
+      );
+    
+      dayActions.classList.remove("hidden");
+
 
     };
 
