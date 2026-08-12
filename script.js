@@ -182,6 +182,65 @@ function showWord() {
 
 }
 
+// 정답 확인
+checkBtn.onclick = () => {
+
+  const item = quizWords[currentIndex];
+
+  const userAnswer =
+    answerInput.value.trim().toLowerCase();
+
+
+  if (!userAnswer) {
+
+    alert("정답을 입력해주세요.");
+
+    answerInput.focus();
+
+    return;
+
+  }
+
+
+  let correctAnswer;
+
+
+  if (mode === "EN_KO") {
+
+    correctAnswer =
+      item.뜻.trim().toLowerCase();
+
+  } else {
+
+    correctAnswer =
+      item.영어.trim().toLowerCase();
+
+  }
+
+
+  answerBox.classList.remove("hidden");
+
+
+  if (userAnswer === correctAnswer) {
+
+    answerText.textContent =
+      "⭕ 정답!";
+
+  } else {
+
+    answerText.textContent =
+      `❌ 오답\n정답: ${correctAnswer}`;
+
+  }
+
+
+  answerInput.disabled = true;
+
+  checkBtn.disabled = true;
+
+  nextBtn.disabled = false;
+
+};
 
 
 // 다음 문제
