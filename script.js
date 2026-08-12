@@ -212,7 +212,7 @@ checkBtn.onclick = () => {
       .toLowerCase()
 
       // 품사 제거
-      .replace(/^(v\.|n\.|adj\.|adv\.|prep\.|conj\.|pron\.|det\.|aux\.)\s*/i, "")
+      .replace(/^(v\.|n\.|a\.|adj\.|adv\.|prep\.|conj\.|pron\.|det\.|aux\.)\s*/i, "")
 
       // 물결표 제거
       .replace(/~/g, "")
