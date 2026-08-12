@@ -333,3 +333,19 @@ listBackBtn.onclick = () => {
 
 
 };
+
+startBtn.onclick = () => {
+
+  currentIndex = 0;
+  mode = "EN_KO";
+
+  dayTitle.textContent =
+    "DAY " + currentDay;
+
+  dayScreen.classList.add("hidden");
+  quizScreen.classList.remove("hidden");
+
+  showWord();
+
+};
+
