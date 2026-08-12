@@ -4,6 +4,8 @@ let quizWords = [];
 let currentIndex = 0;
 let mode = "EN_KO";
 
+// 틀린 단어
+let wrongWords = [];
 
 // 화면 요소
 const dayScreen = document.getElementById("dayScreen");
@@ -132,6 +134,7 @@ function startDay(day) {
 
   currentIndex = 0;
   mode = "EN_KO";
+  wrongWords = [];
 
 
   dayTitle.textContent = "DAY " + day;
@@ -194,7 +197,7 @@ function showWord() {
 
 }
 
-// 정답 확인
+
 // 정답 확인
 checkBtn.onclick = () => {
 
@@ -267,15 +270,20 @@ checkBtn.onclick = () => {
 
 
   if (isCorrect) {
-
+  
     answerText.textContent =
       "⭕ 정답!";
-
+  
   } else {
-
+  
     answerText.textContent =
       `❌ 오답\n정답: ${item.뜻}`;
-
+  
+    // 오답 저장
+    if (!wrongWords.includes(item)) {
+      wrongWords.push(item);
+    }
+  
   }
 
 
@@ -424,6 +432,7 @@ startBtn.onclick = () => {
 
   currentIndex = 0;
   mode = "EN_KO";
+  wrongWords = [];
   
   // 단어 순서 랜덤 섞기
   quizWords.sort(() => Math.random() - 0.5);
