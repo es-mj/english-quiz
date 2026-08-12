@@ -6,6 +6,7 @@ let mode = "EN_KO";
 
 // 틀린 단어
 let wrongWords = [];
+let isRetry = false;
 
 // 화면 요소
 const dayScreen = document.getElementById("dayScreen");
@@ -301,11 +302,84 @@ nextBtn.onclick = () => {
   currentIndex++;
 
 
+  // 현재 문제 목록이 끝났을 때
   if (currentIndex >= quizWords.length) {
 
-    alert("DAY 완료!");
+    // 오답 재시험 중
+    if (isRetry) {
 
-    currentIndex = 0;
+      if (wrongWords.length === 0) {
+
+        alert("🎉 오답을 모두 맞혔어요!");
+
+        currentIndex = 0;
+        isRetry = false;
+
+        return;
+
+      }
+
+      // 아직 오답이 남아있음
+      quizWords = [...wrongWords];
+
+      wrongWords = [];
+
+      currentIndex = 0;
+
+      quizWords.sort(() => Math.random() - 0.5);
+
+      showWord();
+
+      return;
+
+    }
+
+
+    // 첫 시험 종료
+    if (wrongWords.length === 0) {
+
+      alert("🎉 DAY 완료!");
+
+      currentIndex = 0;
+
+      showWord();
+
+      return;
+
+    }
+
+
+    // 오답이 있는 경우
+    const retry = confirm(
+      `❌ 오답 ${wrongWords.length}개가 있습니다.\n\n오답만 다시 풀까요?`
+    );
+
+
+    if (retry) {
+
+      isRetry = true;
+
+      quizWords = [...wrongWords];
+
+      wrongWords = [];
+
+      currentIndex = 0;
+
+      quizWords.sort(() => Math.random() - 0.5);
+
+      showWord();
+
+    } else {
+
+      alert("DAY 학습을 종료합니다.");
+
+      currentIndex = 0;
+
+      showWord();
+
+    }
+
+    return;
 
   }
 
@@ -433,6 +507,7 @@ startBtn.onclick = () => {
   currentIndex = 0;
   mode = "EN_KO";
   wrongWords = [];
+  isRetry = false;
   
   // 단어 순서 랜덤 섞기
   quizWords.sort(() => Math.random() - 0.5);
