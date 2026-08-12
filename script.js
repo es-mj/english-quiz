@@ -24,7 +24,7 @@ const answerBox = document.getElementById("answerBox");
 // 버튼
 const backBtn = document.getElementById("backBtn");
 const speakBtn = document.getElementById("speakBtn");
-const showAnswerBtn = document.getElementById("showAnswerBtn");
+const checkBtn = document.getElementById("checkBtn");
 const nextBtn = document.getElementById("nextBtn");
 const modeBtn = document.getElementById("modeBtn");
 const restartBtn = document.getElementById("restartBtn");
@@ -138,55 +138,49 @@ function startDay(day) {
 // 문제 표시
 function showWord() {
 
-
   const item = quizWords[currentIndex];
-
 
   progress.textContent =
     `${currentIndex + 1} / ${quizWords.length}`;
 
-
-
   wordType.textContent =
     item.품사 || "";
 
-
-
-  if(mode === "EN_KO") {
+  if (mode === "EN_KO") {
 
     questionWord.textContent =
       item.영어;
 
-
     answerText.textContent =
       item.뜻;
 
+    answerInput.placeholder =
+      "한국어 뜻 입력";
 
   } else {
 
     questionWord.textContent =
       item.뜻;
 
-
     answerText.textContent =
       item.영어;
 
+    answerInput.placeholder =
+      "영어 단어 입력";
+
   }
 
-
+  answerInput.value = "";
 
   answerBox.classList.add("hidden");
 
+  answerInput.disabled = false;
+
+  checkBtn.disabled = false;
+
+  nextBtn.disabled = true;
+
 }
-
-
-
-// 정답 보기
-showAnswerBtn.onclick = () => {
-
-  answerBox.classList.remove("hidden");
-
-};
 
 
 
@@ -196,7 +190,7 @@ nextBtn.onclick = () => {
   currentIndex++;
 
 
-  if(currentIndex >= quizWords.length) {
+  if (currentIndex >= quizWords.length) {
 
     alert("DAY 완료!");
 
@@ -208,7 +202,6 @@ nextBtn.onclick = () => {
   showWord();
 
 };
-
 
 
 // 발음
