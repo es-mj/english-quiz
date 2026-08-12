@@ -64,13 +64,21 @@ transition: 0.15s;
 }
 
 .day-buttons button:hover {
-background: #e8f5e9;
-transform: translateY(-1px);
-}
-
-.day-buttons button:hover {
   background: #e8f5e9;
   transform: translateY(-1px);
+}
+
+
+.day-buttons button.selected {
+  background: #81c784;
+  color: white;
+  box-shadow: 0 4px 10px rgba(46, 125, 50, 0.2);
+}
+
+
+.day-buttons button.selected:hover {
+  background: #66bb6a;
+  color: white;
 }
 
 .day-buttons button:active {
