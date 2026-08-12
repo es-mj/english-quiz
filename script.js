@@ -281,29 +281,22 @@ restartBtn.onclick = () => {
 // 전체 단어 보기
 showListBtn.onclick = () => {
 
-
-  quizScreen.classList.add("hidden");
+  dayScreen.classList.add("hidden");
 
   listScreen.classList.remove("hidden");
-
 
   listTitle.textContent =
     "DAY " + currentDay + " 전체 단어";
 
-
   wordList.innerHTML = "";
 
-
   quizWords.forEach(word => {
-
 
     const div =
       document.createElement("div");
 
-
     div.className =
       "word-item";
-
 
     div.innerHTML =
       `
@@ -312,12 +305,9 @@ showListBtn.onclick = () => {
       ${word.뜻}
       `;
 
-
     wordList.appendChild(div);
 
-
   });
-
 
 };
 
