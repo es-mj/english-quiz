@@ -30,18 +30,18 @@ const modeBtn = document.getElementById("modeBtn");
 const restartBtn = document.getElementById("restartBtn");
 
 
-// 단어LIST
+// 단어 LIST
 const listScreen = document.getElementById("listScreen");
 const wordList = document.getElementById("wordList");
 const listTitle = document.getElementById("listTitle");
-
-const showListBtn = document.getElementById("showListBtn");
 const listBackBtn = document.getElementById("listBackBtn");
 
 
-
+// 정답 입력
 const answerInput = document.getElementById("answerInput");
 
+
+// DAY 선택 후 버튼
 const dayActions = document.getElementById("dayActions");
 const startBtn = document.getElementById("startBtn");
 const showListBtn = document.getElementById("showListBtn");
